@@ -1,0 +1,28 @@
+[
+    {
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzY4NywiaWF0IjoxNzIxOTIxMzEwLCJleHAiOjE3MjQ1MTMzMTB9.YvWEFApOES7Vaq9IEvELQ0spdc6RcPxBRQwAsNxeLow",
+    "user": {
+        "id": 3687,
+        "username": "juchertb",
+        "email": "juchertb@server.ca",
+        "provider": "local",
+        "confirmed": true,
+        "blocked": false,
+        "createdAt": "2024-04-22T19:51:30.356Z",
+        "updatedAt": "2024-04-22T19:51:30.356Z"
+    }
+},
+{
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzIxOTMzMjQ1LCJleHAiOjE3MjQ1MjUyNDV9.O-a45v9WbJn0zwVkqz23AVuUv_teniyM0UYCY-JJJ8U",
+    "user": {
+        "id": 4,
+        "username": "demo user",
+        "email": "test@test.com",
+        "provider": "local",
+        "confirmed": true,
+        "blocked": false,
+        "createdAt": "2023-08-07T20:52:10.289Z",
+        "updatedAt": "2023-08-10T00:46:16.069Z"
+    }
+}
+]
