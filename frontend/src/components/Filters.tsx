@@ -16,7 +16,7 @@ function Filters() {
 
       <FormInput
         type='search'
-        label='search product'
+        label='search book'
         name='search'
         defaultValue={search}
       />
@@ -30,7 +30,7 @@ function Filters() {
 
       {/* COMPANIES */}
       <FormSelect
-        label='select company'
+        label='select author'
         name='company'
         options={meta.companies}
         defaultValue={company}

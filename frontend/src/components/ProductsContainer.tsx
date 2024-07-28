@@ -18,7 +18,7 @@ function ProductsContainer() {
       <section>
         <div className='flex justify-between items-center mt-8'>
           <h4 className='font-medium text-md'>
-            {totalProducts} product{totalProducts > 1 && 's'}
+            {totalProducts} book{totalProducts > 1 && 's'}
           </h4>
           <div className='flex gap-x-4'>
             <Button

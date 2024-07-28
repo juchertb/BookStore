@@ -17,7 +17,7 @@ function ProductsGrid() {
                 <img
                   src={image}
                   alt={title}
-                  className='rounded-md h-64 md:h-48 w-full object-cover'
+                  className='rounded-md h-64 md:h-48 object-cover mx-auto'
                 />
                 <div className='mt-4 text-center'>
                   <h2 className='text-xl font-semibold capitalize'>{title}</h2>

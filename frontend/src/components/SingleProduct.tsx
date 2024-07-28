@@ -54,7 +54,7 @@ function SingleProduct() {
         </Button>
         <Separator orientation='vertical' />
         <Button asChild variant='link' size='sm'>
-          <Link to='/products'>Products</Link>
+          <Link to='/products'>Books</Link>
         </Button>
       </div>
       {/* PRODUCT */}
@@ -63,7 +63,8 @@ function SingleProduct() {
         <img
           src={image}
           alt={title}
-          className='w-96 h-96 object-cover rounded-lg lg:w-full'
+          className='h-96 object-cover rounded-lg mx-auto'
+          //className='w-96 h-96 object-cover rounded-lg lg:w-full'
         />
         {/* PRODUCT INFO SECOND COL */}
         <div>

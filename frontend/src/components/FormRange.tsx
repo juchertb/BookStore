@@ -11,8 +11,8 @@ type FormRangeProps = {
 };
 
 function FormRange({ name, label, defaultValue }: FormRangeProps) {
-  const step = 1000;
-  const maxPrice = 100000;
+  const step = 100;
+  const maxPrice = 15000;
   const defaultPrice = defaultValue ? Number(defaultValue) : maxPrice;
   const [selectedPrice, setSelectedPrice] = useState(defaultPrice);
 

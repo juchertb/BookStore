@@ -71,7 +71,7 @@ function Login() {
         </CardHeader>
         <CardContent>
           <Form method='post'>
-                      <FormInput type='email' label='email (juchertb@server.ca/Marita1.)' name='identifier' />
+                      <FormInput type='email' label='email (someuser@server.ca/Pwd2letyouin!)' name='identifier' />
             <FormInput type='password' name='password' />
             <SubmitBtn text='Login' className='w-full mt-4' />
             <Button

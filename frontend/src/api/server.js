@@ -9,7 +9,8 @@ import { parseISO } from 'date-fns';
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Load data from json files when using fakeApi
-import products from '@/api/data/products.json';
+//import products from '@/api/data/products.json';
+import products from '@/api/data/books.json';
 import users from '@/api/data/user.json';
 import orders from '@/api/data/orders.json';
 //////////////////////////////////////////////////////////////////////////////////////
