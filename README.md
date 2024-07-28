@@ -14,6 +14,7 @@ At this point the Bookstore Single Page Application should load in the browser.
 
 
 
-<img src="bookstore-books.png" width=100% height=100%>
-<img src="bookstore-cart.png" width=100% height=100%>
-<img src="bookstore-order.png" width=100% height=100%>
+<img src="bookstore-landing.png" width=100% height=100% style="margin-top:10px;margin-bottom:10px">
+<img src="bookstore-books.png" width=100% height=100% style="margin-top:10px;margin-bottom:10px">
+<img src="bookstore-cart.png" width=100% height=100% style="margin-top:10px;margin-bottom:10px">
+<img src="bookstore-order.png" width=100% height=100% style="margin-top:10px;margin-bottom:10px">
