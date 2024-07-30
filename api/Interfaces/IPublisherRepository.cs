@@ -10,6 +10,10 @@ namespace api.Interfaces
 {
     public interface IPublisherRepository
     {
-        Task<List<Publisher>> GetAllAsync();        
+        Task<List<Publisher>> GetAllAsync();  
+        Task<Publisher?> GetByIdAsync(int id);
+        Task<Publisher> CreateAsync(Publisher PublisherModel);
+        Task<Publisher?> UpdateAsync(int id, Publisher PublisherModel);
+        Task<Publisher?> DeleteAsync(int id);        
     }
 }

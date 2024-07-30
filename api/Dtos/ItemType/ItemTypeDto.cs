@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace api.Dtos
+namespace api.Dtos.ItemType
 {
     public class ItemTypeDto
     {

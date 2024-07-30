@@ -10,6 +10,10 @@ namespace api.Interfaces
 {
     public interface IItemTypeRepository
     {
-        Task<List<ItemType>> GetAllAsync();      
+        Task<List<ItemType>> GetAllAsync();    
+        Task<ItemType?> GetByIdAsync(int id);
+        Task<ItemType> CreateAsync(ItemType ItemTypeModel);
+        Task<ItemType?> UpdateAsync(int id, ItemType ItemTypeModel);
+        Task<ItemType?> DeleteAsync(int id);    
     }
 }

@@ -17,5 +17,21 @@ namespace api.Mappers
                 Name = publisherModel.Name
             };
         }
+
+        public static Publisher ToPublisherFromCreate(this CreatePublisherDto publisherDto)
+        {
+            return new Publisher
+            {
+                Name = publisherDto.Name,
+            };
+        }
+
+        public static Publisher ToPublisherFromUpdate(this UpdatePublisherRequestDto publisherDto)
+        {
+            return new Publisher
+            {
+                Name = publisherDto.Name,
+            };
+        }
     }
 }
