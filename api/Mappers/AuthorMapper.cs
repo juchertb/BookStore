@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using api.Dtos;
+using api.Dtos.Author;
 using api.Models;
 
 namespace api.Mappers
@@ -15,6 +15,22 @@ namespace api.Mappers
             {
                 Id = authorModel.Id,
                 Name = authorModel.Name
+            };
+        }
+
+        public static Author ToAuthorFromCreate(this CreateAuthorDto authorDto)
+        {
+            return new Author
+            {
+                Name = authorDto.Name,
+            };
+        }
+
+        public static Author ToAuthorFromUpdate(this UpdateAuthorRequestDto authorDto)
+        {
+            return new Author
+            {
+                Name = authorDto.Name,
             };
         }
     }

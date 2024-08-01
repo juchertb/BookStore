@@ -40,5 +40,47 @@ namespace api.Repository
 
             return await authors.Skip(skipNumber).Take(query.PageSize).ToListAsync();
         }
+
+        public async Task<Author?> GetByIdAsync(int id)
+        {
+            return await _context.Authors.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<Author> CreateAsync(Author authorModel)
+        {
+            await _context.Authors.AddAsync(authorModel);
+            await _context.SaveChangesAsync();
+            return authorModel;
+        }
+
+        public async Task<Author?> UpdateAsync(int id, Author authorModel)
+        {
+            var existingAuthor = await _context.Authors.FindAsync(id);
+
+            if (existingAuthor == null)
+            {
+                return null;
+            }
+
+            existingAuthor.Name = authorModel.Name;
+
+            await _context.SaveChangesAsync();
+
+            return existingAuthor;
+        }
+
+        public async Task<Author?> DeleteAsync(int id)
+        {
+            var authorModel = await _context.Authors.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (authorModel == null)
+            {
+                return null;
+            }
+
+            _context.Authors.Remove(authorModel);
+            await _context.SaveChangesAsync();
+            return authorModel;
+        }
     }
 }

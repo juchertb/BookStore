@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
-using api.Dtos;
+using api.Dtos.Author;
 using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
@@ -38,5 +38,67 @@ namespace api.Controllers
 
             return Ok(authorDto);
         }     
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var author = await _authorRepo.GetByIdAsync(id);
+
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(author.ToAuthorDto());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateAuthorDto authorDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var authorModel = authorDto.ToAuthorFromCreate();
+
+            await _authorRepo.CreateAsync(authorModel);
+            return CreatedAtAction(nameof(GetById), new { id = authorModel.Id }, authorModel.ToAuthorDto());
+        }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateAuthorRequestDto updateDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var author = await _authorRepo.UpdateAsync(id, updateDto.ToAuthorFromUpdate());
+
+            if (author == null)
+            {
+                return NotFound("Author not found");
+            }
+
+            return Ok(author.ToAuthorDto());
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var authorModel = await _authorRepo.DeleteAsync(id);
+
+            if (authorModel == null)
+            {
+                return NotFound("Author does not exist");
+            }
+
+            return Ok(authorModel);
+        }   
     }
 }
