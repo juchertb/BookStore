@@ -21,9 +21,7 @@ export async function client(endpoint, { body, ...customConfig } = {}) {
     let data
     try {
       const response = await window.fetch(endpoint, config)
-      console.log(response);
       data = await response.json()
-      console.log(data);
       if (response.ok) {
         // Return a result object similar to Axios
         return {

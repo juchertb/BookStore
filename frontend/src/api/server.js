@@ -218,9 +218,7 @@ export const handlers = [
 //     return HttpResponse.json(products)
 //   }),  
   http.get('/fakeApi/products', async ({ request, params }) => {
-    console.log('here');
     const url = new URL(request.url);
-    console.log('url = ' + url);
 
     // Product search parameters
     const search = url.searchParams.get('search');
