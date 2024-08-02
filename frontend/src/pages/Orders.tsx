@@ -1,6 +1,6 @@
 import { LoaderFunction, redirect, useLoaderData } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
-import { customFetch } from '@/utils';
+import { blankOrdersResponse, customFetch } from '@/utils';
 import {
   OrdersList,
   ComplexPaginationContainer,
@@ -24,11 +24,15 @@ export const loader =
     ]);
     try {
       /*
-        * Using the fakeApi (server.js) instead of Axios fordata retrieval.
+        * Using the fakeApi (server.js) instead of Axios for data retrieval.
         */
-      const response = await client.get('fakeApi/orders');
-      return { ...response.data as OrdersResponse };
-
+      try {
+        const response = await client.get('fakeApi/orders');
+        return { ...response.data as OrdersResponse };
+      }
+      catch (error) {
+        return blankOrdersResponse;
+      }
       /* Original lines of code that use axios from customFetch for data retrieval       
       const response = await customFetch.get<OrdersResponse>('/orders', {
         params,

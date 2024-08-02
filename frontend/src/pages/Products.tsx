@@ -1,5 +1,6 @@
 import { Filters, ProductsContainer, PaginationContainer } from '@/components';
 import {
+  blankProductsResponse,
   customFetch,
   type ProductsResponse,
   type ProductsResponseWithParams,
@@ -18,12 +19,16 @@ export const loader: LoaderFunction = async ({
   ]);
 
   /*
-  * Using the fakeApi (server.js) instead of Axios fordata retrieval.
+  * Using the fakeApi (server.js) instead of Axios for data retrieval.
   */
   const searchParams = new URL(request.url).searchParams.toString();
-  const response = await client.get(url + '?' + searchParams);
-  //const response = await client.get(url, { params });
-  return { ...response.data as ProductsResponse, params };
+  try {
+    const response = await client.get(url + '?' + searchParams);
+    return { ...response.data as ProductsResponse, params };
+  }
+  catch (error) {
+    return { ...blankProductsResponse, params };
+  }
 
   /* Original lines of code that use axios from customFetch for data retrieval 
    const response = await customFetch<ProductsResponse>(url, {
