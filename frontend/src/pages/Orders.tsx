@@ -1,6 +1,6 @@
 import { LoaderFunction, redirect, useLoaderData } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
-import { blankOrdersResponse, customFetch } from '@/utils';
+import { customFetch } from '@/utils';
 import {
   OrdersList,
   ComplexPaginationContainer,
@@ -8,7 +8,6 @@ import {
 } from '@/components';
 import { ReduxStore } from '@/app/store';
 import { type OrdersResponse } from '@/utils';
-import { client } from '@/api/client';
 
 export const loader =
   (store: ReduxStore): LoaderFunction =>
@@ -23,17 +22,6 @@ export const loader =
       ...new URL(request.url).searchParams.entries(),
     ]);
     try {
-      /*
-        * Using the fakeApi (server.js) instead of Axios for data retrieval.
-        */
-      try {
-        const response = await client.get('fakeApi/orders');
-        return { ...response.data as OrdersResponse };
-      }
-      catch (error) {
-        return blankOrdersResponse;
-      }
-      /* Original lines of code that use axios from customFetch for data retrieval       
       const response = await customFetch.get<OrdersResponse>('/orders', {
         params,
         headers: {
@@ -41,7 +29,7 @@ export const loader =
         },
       });
       return { ...response.data };
-      */
+
     } catch (error) {
       console.log(error);
       toast({ description: 'Failed to fetch orders' });

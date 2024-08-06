@@ -13,29 +13,20 @@ import { SelectProductAmount, SelectProductColor } from '@/components';
 import { Mode } from '@/components/SelectProductAmount';
 import { useAppDispatch } from '@/app/hooks';
 import { addItem } from '@/features/cart/cartSlice';
-import { client } from '@/api/client';
 
 export const loader: LoaderFunction = async ({
   params,
 }): Promise<SingleProductResponse> => {
 
-  /*
-  * Using the fakeApi (server.js) instead of Axios fordata retrieval.
-  */
-    const response = await client.get(`/fakeApi/products/${params.id}`);
-    console.log({ ...response.data as SingleProductResponse});
-    return { ...response.data as SingleProductResponse };
-  
-    /* Original lines of code that use axios from customFetch for data retrieval 
     const response = await customFetch<SingleProductResponse>(
       `/products/${params.id}`
     );
     return { ...response.data };
-   */
 };
 
 function SingleProduct() {
   const { data: product } = useLoaderData() as SingleProductResponse;
+  console.log('here');
   const { image, title, price, description, colors, company } =
     product.attributes;
   const dollarsAmount = formatAsDollars(price);
