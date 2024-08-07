@@ -258,6 +258,31 @@ export const handlers = [
         productList = { data: productList.data.filter(c => parseInt(c.attributes.price) <= price), meta: products.meta };  
     }
 
+    switch (order) {
+        case 'a-z':
+          //(a < b) ? -1 : ((a > b) ? 1 : 0)
+          productList = { data: productList.data.sort(function(a, b){return (
+            (a.attributes.title < b.attributes.title) ? -1 : ((a.attributes.title > b.attributes.title) ? 1 : 0))
+          }), meta: products.meta  };
+          break;
+        case 'z-a':
+          productList = { data: productList.data.sort(function(a, b){return (
+            (a.attributes.title > b.attributes.title) ? -1 : ((a.attributes.title < b.attributes.title) ? 1 : 0))
+          }), meta: products.meta  };
+          break;
+        case 'high':
+          productList = { data: productList.data.sort(function(a, b){return b.attributes.price - a.attributes.price}), meta: products.meta  };
+          break;
+        case 'low':
+          productList = { data: productList.data.sort(function(a, b){return a.attributes.price - b.attributes.price}), meta: products.meta  };
+          break;
+        default:
+          productList = { data: productList.data.sort(function(a, b){return (
+            (a.attributes.title < b.attributes.title) ? -1 : ((a.attributes.title > b.attributes.title) ? 1 : 0))
+          }), meta: products.meta  };
+      }
+
+
     // pagination
     if (page == null) {
       page = 1;
