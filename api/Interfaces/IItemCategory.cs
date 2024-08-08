@@ -10,6 +10,9 @@ namespace api.Interfaces
 {
     public interface IItemCategoryRepository
     {
-        Task<List<ItemCategory>> GetAllAsync(ItemCategoryQueryObject query);      
+        Task<List<ItemCategory>> GetAllAsync(ItemCategoryQueryObject query); 
+        Task<ItemCategory?> GetByIdAsync(int itemId, int categoryId);
+        Task<ItemCategory> CreateAsync(ItemCategory itemCategoryModel);
+        Task<ItemCategory?> DeleteAsync(int itemId, int categoryId);     
     }
 }

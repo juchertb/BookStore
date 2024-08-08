@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using api.Dtos;
+using api.Dtos.BookAuthor;
 using api.Models;
 
 namespace api.Mappers
@@ -18,6 +18,15 @@ namespace api.Mappers
                 Book = bookAuthorModel.Book,
                 Author = bookAuthorModel.Author
             };
-        }       
+        }
+
+        public static BookAuthor ToBookAuthorFromCreate(this CreateBookAuthorDto bookAuthorDto)
+        {
+            return new BookAuthor
+            {
+                BookId = bookAuthorDto.BookId,
+                AuthorId = bookAuthorDto.AuthorId
+            };
+        }
     }
 }

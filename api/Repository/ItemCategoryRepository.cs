@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
-using api.Dtos;
+using api.Dtos.ItemCategory;
 using api.Helpers;
 using api.Interfaces;
 using api.Models;
@@ -49,6 +49,32 @@ namespace api.Repository
             var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
             return await itemCategories.Skip(skipNumber).Take(query.PageSize).ToListAsync();
+        }
+
+        public async Task<ItemCategory?> GetByIdAsync(int itemId, int categoryId)
+        {
+            return await _context.ItemCategory.FindAsync(itemId, categoryId);
+        }
+
+        public async Task<ItemCategory> CreateAsync(ItemCategory itemCategoryModel)
+        {
+            await _context.ItemCategory.AddAsync(itemCategoryModel);
+            await _context.SaveChangesAsync();
+            return itemCategoryModel;
+        }
+
+        public async Task<ItemCategory?> DeleteAsync(int itemId, int categoryId)
+        {
+            var itemCategoryModel = await _context.ItemCategory.FindAsync(itemId, categoryId);
+
+            if (itemCategoryModel == null)
+            {
+                return null;
+            }
+
+            _context.ItemCategory.Remove(itemCategoryModel);
+            await _context.SaveChangesAsync();
+            return itemCategoryModel;
         }
     }
 }

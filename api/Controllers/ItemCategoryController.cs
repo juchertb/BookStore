@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
-using api.Dtos;
+using api.Dtos.ItemCategory;
 using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
@@ -37,6 +37,50 @@ namespace api.Controllers
             var itemCategoryDto = itemCategories.Select(s => s.ToItemCategoryDto()).ToList();
 
             return Ok(itemCategoryDto);
-        }     
+        }   
+
+        [HttpGet("{itemId:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int itemId, [FromQuery] int categoryId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var itemCategory = await _itemCategoryRepo.GetByIdAsync(itemId, categoryId);
+
+            if (itemCategory == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(itemCategory.ToItemCategoryDto());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateItemCategoryDto itemCategoryDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var itemCategoryModel = itemCategoryDto.ToItemCategoryFromCreate();
+
+            await _itemCategoryRepo.CreateAsync(itemCategoryModel);
+            return CreatedAtAction(nameof(GetById), new { itemId = itemCategoryModel.ItemId, categoryId = itemCategoryModel.CategoryId }, itemCategoryModel.ToItemCategoryDto());
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] int bookId, [FromQuery] int authorId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var bookAuthorModel = await _itemCategoryRepo.DeleteAsync(bookId, authorId);
+
+            if (bookAuthorModel == null)
+            {
+                return NotFound("Item Category does not exist");
+            }
+
+            return Ok(bookAuthorModel);
+        }   
     }
 }
