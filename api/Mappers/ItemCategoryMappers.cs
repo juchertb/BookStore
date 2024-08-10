@@ -14,7 +14,9 @@ namespace api.Mappers
             return new ItemCategoryDto
             {
                 Item = itemCategoryModel.Item,
-                Category = itemCategoryModel.Category
+                Category = itemCategoryModel.Category,
+                ItemId = itemCategoryModel.ItemId,
+                CategoryId = itemCategoryModel.CategoryId
             };
         } 
 
@@ -23,7 +25,9 @@ namespace api.Mappers
             return new ItemCategory
             {
                 ItemId = itemCategoryDto.ItemId,
-                CategoryId = itemCategoryDto.CategoryId
+                CategoryId = itemCategoryDto.CategoryId,
+                //Item = itemCategoryDto.Item,
+                //Category = itemCategoryDto.Category
             };
         }      
     }

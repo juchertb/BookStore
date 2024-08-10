@@ -53,7 +53,7 @@ namespace api.Repository
 
         public async Task<ItemCategory?> GetByIdAsync(int itemId, int categoryId)
         {
-            return await _context.ItemCategory.FindAsync(itemId, categoryId);
+            return await _context.ItemCategory.FindAsync(itemId, categoryId);//.Where(x => x.ItemId == itemId && x.CategoryId == categoryId).Include(c => c.Item).Include(x => x.Category).FirstAsync();
         }
 
         public async Task<ItemCategory> CreateAsync(ItemCategory itemCategoryModel)

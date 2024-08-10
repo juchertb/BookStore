@@ -11,6 +11,6 @@ namespace api.Dtos.ItemCategory
         [Required]
         public int ItemId { get; set; }
         [Required]
-        public int CategoryId { get; set; }       
+        public int CategoryId { get; set; }    
     }
 }
