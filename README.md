@@ -32,18 +32,16 @@ https://stackoverflow.com/questions/67187661/http-500-19-error-for-dot-net-5-0-w
 Likely need to install .NET core hosting bundle: https://learn.microsoft.com/en-us/aspnet/core/tutorials/publish-to-iis?view=aspnetcore-5.0&tabs=visual-studio
 
 ## Build release Web API package ##
-dotnet build --configuration Release
-
-Run VS Code as administrator to publish api.
-dotnet publish -c Release -o c:\inetpub\wwwroot\restapi
+1. dotnet build --configuration Release
+2. Run VS Code as administrator to publish api: dotnet publish -c Release -o c:\inetpub\wwwroot\restapi
 
 ## Setup IIS web site ##
-(1) Create a new application pool "NETTESTAPI" and set the identity to "[machine name]\[user id]]".
+1. Create a new application pool "NETTESTAPI" and set the identity to "[machine name]\[user id]]".
     Otherwise I would get a cannot login error from SQLExpress in the application event log.
-(2) Right click sites and select "Add Website"
-(3) Set port to whatever port is setup for the JWT in the appsetting.json (5246). I think it was working with other ports too.
-(4) Create new application pool and use it for the new web site.
-(5) Point to the folder c:\prj\bookstore\api\publish
+2. Right click sites and select "Add Website"
+3. Set port to whatever port is setup for the JWT in the appsetting.json (5246). I think it was working with other ports too.
+4. Create new application pool and use it for the new web site.
+5. Point to the folder c:\prj\bookstore\api\publish
 
 
 ## Looks like SQLExpress is required ##
@@ -62,7 +60,7 @@ So entity framework will create the DB under the default SQLExpress path of "C:\
 I then have to detach the database, copy the files to "C:\Prj\SQL Server Databases", then re-attach the database.
 
 Note: For database files created with MSSQLLocalDB in the default location of "C:\Users\[user id]", SQL Express wasn't seeing the files, I had to move them
-and I had to give full control to the mdf and ldf files to Users.
+and I had to give full control to the mdf and ldf files to the admin user.
 https://stackoverflow.com/questions/13778034/how-do-i-change-database-default-locations-for-localdb-in-sql-server-managemen
 
 https://www.youtube.com/watch?v=kMmZ9SbPBQA
