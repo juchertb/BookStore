@@ -15,6 +15,7 @@ import { client } from '@/api/client';
   Using the fake API
 */
 const productionUrl = '/fakeApi';
+//const productionUrl = 'http://localhost:5246/api';
 
 export const customFetch = async <T>(url, params?): Promise<{data: T, headers: any}> => {
 //export const customFetch = <T>(url, params): {data: T, headers: any} => {
@@ -34,6 +35,7 @@ export const customFetch = async <T>(url, params?): Promise<{data: T, headers: a
   const headers: any = '';
   try {
     const response = await client.get(productionUrl + url + queryString);
+    console.log(response);
     return response;
   }
   catch (err) {

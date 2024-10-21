@@ -49,6 +49,7 @@ function Login() {
 
   const loginAsGuestUser = async (): Promise<void> => {
     try {
+      /*
       const response: AxiosResponse = await customFetch.post('/auth/local', {
         identifier: 'test@test.com',
         password: 'secret',
@@ -57,6 +58,7 @@ function Login() {
       const username = response.data.user.username;
       const jwt = response.data.jwt;
       dispatch(loginUser({ username, jwt }));
+      */
       navigate('/');
     } catch (error) {
       console.log(error);

@@ -134,6 +134,7 @@ let memoryState: State = { toasts: [] }
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action)
   listeners.forEach((listener) => {
+    console.log('in loop');
     listener(memoryState)
   })
 }
@@ -171,8 +172,9 @@ function toast({ ...props }: Toast) {
 
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState)
-
+console.log('in useToast');
   React.useEffect(() => {
+    console.log('push item into listener');
     listeners.push(setState)
     return () => {
       const index = listeners.indexOf(setState)

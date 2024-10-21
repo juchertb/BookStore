@@ -21,4 +21,5 @@ export default defineConfig({
     setupFiles: "src/setupTests",
     mockReset: true,
   },
+  //build: { chunkSizeWarningLimit: 6400, }
 })
