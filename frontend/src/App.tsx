@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, createHashRouter } from 'react-router-dom';
 
 import {
   HomeLayout,
@@ -28,7 +28,14 @@ import { action as loginUser } from './pages/Login';
 import { action as checkoutAction } from './components/CheckoutForm';
 
 import { store } from './app/store';
-const router = createBrowserRouter([
+
+/*
+  I had to switch from createRouterBrowser to createHashRouter because
+  routing was not working in Github pages.
+  https://www.linkedin.com/pulse/how-make-react-routing-work-github-pages-abhishek-sharma-cjtcc/
+*/
+//const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <HomeLayout />,

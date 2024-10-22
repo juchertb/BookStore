@@ -14,7 +14,7 @@ export default defineConfig({
         '@': path.resolve(__dirname, './src'),
     },
   },
-  base: "/",
+  base: "", /* this was set to "/" and I was having the wrong asset paths in the production index.html file (https://github.com/vitejs/vite/issues/4375) */
   test: {
     globals: true,
     environment: "jsdom",

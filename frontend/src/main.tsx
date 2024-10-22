@@ -11,7 +11,13 @@ async function start() {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
   // Start our mock API server
-  await worker.start({ onUnhandledRequest: 'bypass' });
+  await worker.start({ 
+    onUnhandledRequest: 'bypass' , 
+    serviceWorker: {
+    // This is useful if your application follows
+    // a strict directory structure.
+    url: './mockServiceWorker.js',
+  }});
 
   //store.dispatch(extendedApiSlice.endpoints.getUsers.initiate())
 ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -15,7 +15,8 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test-build": "serve -s dist"
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
